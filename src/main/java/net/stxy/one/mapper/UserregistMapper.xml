@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.stxy.one.mapper.UserregistMapper">
+<insert id="insert" parameterType="net.stxy.one.bean.Userlogin">
+		insert into user
+		(u_name,u_loginid,u_pwd,u_sex,u_school,u_edu,u_tel,u_exp,u_mail,u_direct)
+		values(
+		#{u_name,jdbcType=VARCHAR},
+		#{u_loginid,jdbcType=VARCHAR},
+		#{u_pwd,jdbcType=VARCHAR},
+		#{u_sex,jdbcType=VARCHAR},
+	
+		#{u_school,jdbcType=VARCHAR},
+		#{u_edu,jdbcType=VARCHAR},
+		#{u_tel,jdbcType=VARCHAR},
+		#{u_exp,jdbcType=VARCHAR},
+		#{u_mail,jdbcType=VARCHAR},
+		#{u_direct,jdbcType=VARCHAR}
+		);
+	</insert>
+	<select id="login" parameterType="net.stxy.one.bean.Userlogin"
+		resultType="net.stxy.one.bean.Userlogin">
+		select * from user where u_loginid=#{u_loginid,jdbcType=VARCHAR}and
+		u_pwd=#{u_pwd,jdbcType=VARCHAR}and u_role=#{u_role,jdbcType=VARCHAR}
+	</select>
+</mapper>

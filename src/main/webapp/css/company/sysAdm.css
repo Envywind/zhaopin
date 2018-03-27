@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+body,td,th{ float-family:宋体; font-size:12px; color:#000000;}
+a{text-align:none; color:#003399;}
+#tabList{ background-color:#000066;}
+#tabList th{ background-color:#BEEAED;}
+#tabList td{ background-color:#FFFFFF;}
+#tabInq th{ letter-spacing:3px;}
+.tabTitle{font-size:16px; font-family:黑体; color:#006699;}

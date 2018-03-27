@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.stxy.one.mapper.AdminCompanyMapper">
+
+	<!-- 查询公司链表 -->
+	<select id="list" parameterType="net.stxy.one.bean.Company"
+		resultType="net.stxy.one.bean.Company">
+		select * from company where c_static = '1'
+	</select>
+
+	<!-- 通过关键字查询 -->
+	<select id="selectByName"  parameterType="java.lang.String"
+		resultType="net.stxy.one.bean.Company">
+		select * from company where c_name=#{c_name,jdbcType=INTEGER}
+	</select>
+
+	<!-- 注销公司 -->
+	<update id="update" parameterType="net.stxy.one.bean.Company">
+		update company set c_static = '0' where c_id = #{c_id}
+	</update>
+
+</mapper>

@@ -1,0 +1,8 @@
+/* CSS Document */
+body,td,th{font-family:"ËÎÌו"; font-size:13px; color:#000000;}
+a{text-decoration:none; color:#003399; font-size:15px }
+#tabList{background-color:#000066;font-size:50px;}
+#tabList th{background-color:#090;}
+#tabList td{background-color:#FFFFFF; height: 50px;}
+#tabInq th{letter-spacing:3px;}
+.tabTitle{font-size:30px; font-family:"÷ÚÌו"; color:#006699;}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.stxy.one.mapper.ResumeMapper">
+
+	<!--通过公司ID查询投简的信息 -->
+	<select id="selectResumeByC_id" parameterType="java.lang.String"
+		resultType="net.stxy.one.bean.Resume">
+		select * from Resume where c_id=#{c_id,jdbcType=INTEGER} and r_static = '0'
+	</select>
+	
+	<!-- 查询需要审核的公司 -->
+	<select id="list" parameterType="net.stxy.one.bean.Resume"
+		resultType="net.stxy.one.bean.Resume">
+		select * from resume where r_static = '0'
+	</select>
+	
+	<!-- 简历通过 -->
+	<update id="UpdateResume1" parameterType="net.stxy.one.bean.Resume">
+		update resume set
+		r_static = '1' where r_id = #{r_id}
+	</update>
+
+	<!-- 简历不通过 -->
+	<update id="UpdateResume2" parameterType="net.stxy.one.bean.Resume">
+		update resume set
+		r_static = '2' where r_id = #{r_id}
+	</update>
+
+
+</mapper>
