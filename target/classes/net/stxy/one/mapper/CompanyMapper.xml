@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.stxy.one.mapper.CompanyMapper">
+	<!-- 根据C_id 显示公司信息 -->
+	<select id="selectByC_id" parameterType="java.lang.String"
+		resultType="net.stxy.one.bean.Company">
+		select * from company where c_id=#{c_id,jdbcType=INTEGER}
+	</select>
+
+	<!-- 估计c_id 去修改公司信息 -->
+	<update id="UpdateCompany" parameterType="net.stxy.one.bean.Company">
+		update company set
+		c_pwd=#{c_pwd,jdbcType=VARCHAR}
+		where c_id=#{c_id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 根据c_id 查看公司发布招聘的信息 -->
+	<select id="selectWantedByC_id" parameterType="java.lang.String"
+		resultType="net.stxy.one.bean.Wanted">
+		select * from wanted where c_id=#{c_id,jdbcType=INTEGER}
+	</select>
+	<!-- 根据w_id删除wanted表 -->
+	<delete id="deleteWanted" parameterType="int">
+		delete from wanted where w_id=#{w_id}
+	</delete>
+	<!-- 根据w_id 查看公司某个招聘的详细信息 -->
+	<select id="selectWantedByW_id" parameterType="String"
+		resultType="net.stxy.one.bean.Wanted">
+		select * from wanted where w_id=#{w_id,jdbcType=INTEGER}
+	</select>
+	<!--根据w_id 修改招聘信息 -->
+	<update id="UpdateWanted" parameterType="net.stxy.one.bean.Wanted">
+		update wanted set
+		w_addr=#{w_addr,jdbcType=VARCHAR},
+		w_salary=#{w_salary,jdbcType=VARCHAR},
+		w_num=#{w_num,jdbcType=VARCHAR},
+		w_job=#{w_job,jdbcType=VARCHAR},
+		w_require=#{w_require,jdbcType=VARCHAR}
+		where w_id=#{w_id,jdbcType=INTEGER}
+	</update>
+	<!-- 根据c_id 添加一条招聘信息 -->
+	<insert id="insertWanted" parameterType="net.stxy.one.bean.Wanted">
+	    insert into wanted
+		(c_id,c_name,w_job,w_salary,w_num,w_require,w_addr)values(
+		#{c_id,jdbcType=INTEGER},
+		#{c_name,jdbcType=VARCHAR},
+		#{w_job,jdbcType=VARCHAR},
+		#{w_salary,jdbcType=VARCHAR},
+		#{w_num,jdbcType=VARCHAR},
+		#{w_require,jdbcType=VARCHAR},
+		#{w_addr,jdbcType=VARCHAR}
+		);
+	</insert>
+</mapper>

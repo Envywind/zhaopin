@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.stxy.one.mapper.CompanyloginMapper">
+<select id="companylogin" parameterType="net.stxy.one.bean.Companylogin"
+		resultType="net.stxy.one.bean.Companylogin">
+		select * from company where c_name=#{0,jdbcType=VARCHAR}and
+		c_pwd=#{1,jdbcType=VARCHAR}
+	</select>
+
+<insert id="companyinsert" parameterType="net.stxy.one.bean.Companylogin">
+		insert into company
+		(c_name,c_pwd,c_regcode,c_license,c_L_IDpic,c_L_ID,c_regname,c_regID)
+		values(
+		#{c_name,jdbcType=VARCHAR},
+		#{c_pwd,jdbcType=VARCHAR},
+		#{c_regcode,jdbcType=VARCHAR},
+		#{c_license,jdbcType=VARCHAR},
+	
+		#{c_L_IDpic,jdbcType=VARCHAR},
+		#{c_L_ID,jdbcType=VARCHAR},
+		#{c_regname,jdbcType=VARCHAR},
+		#{c_regID,jdbcType=VARCHAR}
+		
+		);
+	</insert>
+	</mapper>

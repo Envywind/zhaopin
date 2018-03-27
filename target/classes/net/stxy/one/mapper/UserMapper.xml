@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.stxy.one.mapper.UserMapper">
+	<!--根据id查询用户信息-->
+	<select id="select" parameterType="net.stxy.one.bean.User" resultType="net.stxy.one.bean.User">
+		select * from user where u_id=#{u_id} 
+	</select>
+	<!--修改用户信息-->
+	<update id="update" parameterType="net.stxy.one.bean.User">
+		update user set 
+		u_name = #{u_name,jdbcType=VARCHAR},
+		u_pwd = #{u_pwd,jdbcType=VARCHAR},
+		u_role = #{u_role,jdbcType=VARCHAR},
+		u_school = #{u_school,jdbcType=VARCHAR},
+		u_edu = #{u_edu,jdbcType=VARCHAR},
+		u_exp = #{u_exp,jdbcType=VARCHAR},
+		u_mail = #{u_mail,jdbcType=VARCHAR},
+		u_direct = #{u_direct,jdbcType=VARCHAR},
+		u_tel = #{u_tel,jdbcType=VARCHAR}
+		where u_id=#{u_id,jdbcType=INTEGER}
+	</update>
+	<!--查看投简情况 -->
+	<select id="list" parameterType="net.stxy.one.bean.Resume"  resultType="net.stxy.one.bean.Resume">
+		select * from resume where u_id=#{u_id} 
+	</select>
+	<!-- 投递简历 -->
+	<insert id="insert" parameterType="net.stxy.one.bean.Resume">
+		insert into resume (u_id,c_id,r_salary,r_profile)value(
+		#{u_id,jdbcType=VARCHAR},
+		#{c_id,jdbcType=VARCHAR},
+		#{r_salary,jdbcType=VARCHAR},
+		#{r_profile,jdbcType=VARCHAR}
+		)
+	</insert>
+</mapper>
